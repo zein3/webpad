@@ -12,6 +12,7 @@ type TabProps = {
   onClick: () => void;
   onRename: (name: string) => void;
   onDelete: () => void;
+  darkMode: boolean;
 };
 
 export default function Tab({
@@ -20,6 +21,7 @@ export default function Tab({
   onClick,
   onRename,
   onDelete,
+  darkMode,
 }: TabProps) {
   const [editing, setEditing] = useState(false);
   const [name, setName] = useState(tab.name);
@@ -36,7 +38,9 @@ export default function Tab({
         alignItems: "center",
         padding: "6px 10px",
         borderRight: "1px solid #444",
-        background: active ? "#333" : "#222",
+        background: active
+          ? (darkMode ? "#333" : "#fff")
+          : (darkMode ? "#222" : "#eaeaea"),
         cursor: "pointer",
       }}
       onClick={onClick}

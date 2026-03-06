@@ -73,6 +73,7 @@ function App() {
         setTabs={setTabs}
         activeId={activeId}
         setActiveId={setActiveId}
+        darkMode={darkMode}
       />
 
       <WebPad

@@ -11,6 +11,7 @@ type Props = {
   setTabs: React.Dispatch<React.SetStateAction<TabData[]>>;
   activeId: string;
   setActiveId: (id: string) => void;
+  darkMode: boolean;
 };
 
 export default function TabList({
@@ -18,6 +19,7 @@ export default function TabList({
   setTabs,
   activeId,
   setActiveId,
+  darkMode,
 }: Props) {
   const renameTab = (id: string, name: string) => {
     setTabs((prev) =>
@@ -51,8 +53,8 @@ export default function TabList({
     <div
       style={{
         display: "flex",
-        background: "#222",
-        borderBottom: "1px solid #444",
+        background: darkMode ? "#222" : "#f3f3f3",
+        borderBottom: darkMode ? "1px solid #444" : "1px solid #ccc",
       }}
     >
       {tabs.map((tab) => (
@@ -63,6 +65,7 @@ export default function TabList({
           onClick={() => setActiveId(tab.id)}
           onRename={(name) => renameTab(tab.id, name)}
           onDelete={() => deleteTab(tab.id)}
+          darkMode={darkMode}
         />
       ))}
 
@@ -72,7 +75,7 @@ export default function TabList({
           padding: "6px 12px",
           background: "transparent",
           border: "none",
-          color: "#aaa",
+          color: darkMode ? "#aaa" : "#555",
           cursor: "pointer",
         }}
       >
